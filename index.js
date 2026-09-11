@@ -6,19 +6,33 @@
 
 function contact(event) {
   event.preventDefault();
-  // emailjs
-  //   .sendForm(
-  //     'service_q5iaj4s',
-  //     'template_akkqgob',
-  //     event.target,
-  //     '9-3Qg7pNV4Ta0w_98'
-  // ).then(() => {
-  //   console.log('this worked')
-  // })
-  const loading = document.querySelector('modal__overlay--loading');
-  const success = document.querySelector('modal__overlay--success');
-  loading.classList += " modal__overlay--visible"
-  setTimeout(() => {
-    console.log('it worked 1')
-  },500);
+  const loading = document.querySelector('.modal__overlay--loading');
+  const success = document.querySelector('.modal__overlay--success');
+  loading.classList += " modal__overlay--visible";
+
+
+  emailjs
+    .sendForm(
+      'service_q5iaj4s',
+      'template_akkqgob',
+      event.target,
+      '9-3Qg7pNV4Ta0w_98'
+  ).then(() => {
+    loading.classList.remove("modal__overlay--visible");
+    success.classList += " modal__overlay--visible";
+  }).catch(() => {
+    loading.classList.remove("modal__overlay--visible");
+    alert(
+      "The email service is temporarily unavailable. Please contact me directly at vecna0216@gmail.com"
+    )
+  })
+}
+let isModalOpen = false;
+function toggleModal() {
+  if (isModalOpen) {
+    isModalOpen = false
+    return document.body.classList.remove("modal--open")
+  }
+  isModalOpen = true;
+  document.body.classList += " modal--open"
 }
