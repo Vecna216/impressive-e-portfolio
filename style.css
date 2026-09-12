@@ -660,6 +660,9 @@ small phones, tablets, large smartphones
 
 */
 @media (max-width: 768px) {
+  .shape {
+    display: none;
+  }
   .title {
     font-size: 80px;
   }
