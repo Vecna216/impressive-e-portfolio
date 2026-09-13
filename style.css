@@ -660,6 +660,11 @@ small phones, tablets, large smartphones
 
 */
 @media (max-width: 768px) {
+  #personal-logo {
+  height: 75px;
+  width: 75px;
+}
+
   .shape {
     display: none;
   }
